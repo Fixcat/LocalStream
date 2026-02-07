@@ -50,3 +50,4 @@ start.bat
 - `public/style.css` - стили
 - `install_tailscale.bat` - установка Tailscale
 - `TAILSCALE_SETUP.md` - инструкция по Tailscale
+- `chrome-unsafe.bat` - Запускает Chrome который не считает HTTPS ссылки не безопасными
