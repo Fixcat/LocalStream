@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трансляция</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎥 Трансляция</h1>
+        
+        <div class="mode-section">
+            <input type="text" id="stream-name" placeholder="Название" value="Моя трансляция">
+            <button id="start-btn">Запустить</button>
+            <button id="stop-btn" disabled>Остановить</button>
+            <div id="status">Не активна</div>
+        </div>
+
+        <div class="preview">
+            <video id="preview" autoplay muted playsinline></video>
+        </div>
+
+        <div class="footer-links">
+            <a href="watch.html" class="link-btn">📺 Смотреть</a>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="streamer.js"></script>
+</body>
+</html>

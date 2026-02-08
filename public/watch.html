@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📺 Просмотр</h1>
+        
+        <div class="mode-section">
+            <h2>Трансляции</h2>
+            <div id="streamers-list"></div>
+        </div>
+
+        <div id="viewer" class="mode-section" style="display:none;">
+            <h2 id="stream-title">Трансляция</h2>
+            
+            <div class="view-mode-selector">
+                <button id="btn-camera" class="view-mode-btn active">📹 Камера</button>
+                <button id="btn-screen" class="view-mode-btn">🖥️ Экран</button>
+            </div>
+
+            <div class="viewer">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div id="info">Режим: Камера | Статус: Ожидание</div>
+        </div>
+
+        <div class="footer-links">
+            <a href="streamer.html" class="link-btn">🎥 Транслировать</a>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="watch.js"></script>
+</body>
+</html>

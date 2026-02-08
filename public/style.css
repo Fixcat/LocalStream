@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.mode-section {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+#start-stream {
+    background: #4CAF50;
+    color: white;
+}
+
+#start-stream:hover:not(:disabled) {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+#stop-stream {
+    background: #f44336;
+    color: white;
+}
+
+#stop-stream:hover:not(:disabled) {
+    background: #da190b;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.preview, .viewer {
+    position: relative;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+video, canvas {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+#local-video, #remote-video {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+#remote-canvas {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    background: #000;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+#remote-canvas.camera-view {
+    max-width: 480px;
+    max-height: 360px;
+    margin: 0 auto;
+    display: block;
+}
+
+#remote-canvas.screen-view {
+    max-width: 100%;
+    height: auto;
+}
+
+.view-mode-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.camera-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.view-mode-btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 15px 20px;
+    background: #e0e0e0;
+    color: #333;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.view-mode-btn:hover {
+    background: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+.view-mode-btn.active {
+    background: #667eea;
+    color: white;
+    border-color: #764ba2;
+}
+
+.viewer-info {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #666;
+}
+
+.status-indicator {
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: #fff;
+    font-weight: 600;
+}
+
+.footer-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.camera-selection {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.camera-selection h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.camera-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.camera-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.camera-item:hover {
+    border-color: #667eea;
+}
+
+.camera-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.camera-item label {
+    flex: 1;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.secondary-btn {
+    padding: 10px 20px;
+    background: #e0e0e0;
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.camera-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.camera-selector label {
+    font-weight: 600;
+    color: #666;
+}
+
+.camera-select {
+    flex: 1;
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background: white;
+    cursor: pointer;
+}
+
+.camera-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.status {
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#stream-status {
+    background: #ffeb3b;
+    color: #333;
+}
+
+.streamers-list {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.streamer-btn {
+    padding: 12px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+.streamer-btn:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+}
+
+.streamer-btn.active {
+    background: #4CAF50;
+}
+
+.empty-message {
+    color: #999;
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.4em;
+    }
+    
+    .controls {
+        flex-direction: column;
+    }
+    
+    input[type="text"], button {
+        width: 100%;
+    }
+}
