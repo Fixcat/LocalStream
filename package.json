@@ -1,7 +1,7 @@
 {
-  "name": "local-stream-app",
+  "name": "streambridge",
   "version": "1.0.0",
-  "description": "Локальное приложение для трансляции камеры, микрофона и экрана",
+  "description": "Мощное приложение для локальной и удаленной трансляции видео, аудио и экрана в реальном времени",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
